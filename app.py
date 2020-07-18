@@ -16,6 +16,7 @@ app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 app.secret_key = "dflkqjdf9wh4iew0e2349203-q[da;kdfjfhjuas84u5238090joidfa;s"
 api = Api(app)
 
+db.init_app(app)
 
 @app.before_first_request
 def create_tables():
@@ -32,5 +33,4 @@ api.add_resource(UserRegister, "/register/")
 api.add_resource(StoreResource, "/store/<string:name>")
 
 if __name__ == '__main__':
-    db.init_app(app)
     app.run(port=5000, debug=True)
